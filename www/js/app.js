@@ -94,6 +94,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngRoute'])
                         controller: 'PostRideCtrl'
                     }
                 }
+            })
+
+            .state('app.mapride', {
+                url: "/mapride",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/map.html",
+                        controller: 'MapCtrl'
+                    }
+                }
             });
 
 
