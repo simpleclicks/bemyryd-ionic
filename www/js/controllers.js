@@ -80,7 +80,6 @@ angular.module('starter.controllers', [])
             zoom: 8,
             events: {
                 tilesloaded: function (map) {
-                    $scope.centerOnMe();
                     $scope.$apply(function () {
                         $scope.mapInstance = map;
                     });
@@ -108,6 +107,13 @@ angular.module('starter.controllers', [])
                     $scope.map.zoom = 14;
 
                     console.log("my lat lng" + $scope.map.center.latitude +" " + $scope.map.center.longitude);
+
+                    marker = new google.maps.Marker({
+                        position: {lat: $scope.latLong.lat, lng: $scope.latLong.long },
+                        map: $scope.mapInstance
+                    });
+
+                    //$scope.map = map;
 
                     $scope.$apply;
                     $ionicLoading.hide();
