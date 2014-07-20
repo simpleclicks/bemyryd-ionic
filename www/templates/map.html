@@ -1,12 +1,23 @@
-<ion-view title="Map">
-    <ion-nav-buttons side="left">
-        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
-    </ion-nav-buttons>
-    <ion-content class="has-header">
-        <div id="map" data-tap-disabled="true"></div>
+<ion-view title="Map" ng-app="starter" ng-controller="MapCtrl">
+    <ion-header-bar class="bar-stable">
+        <h1 class="title">Map</h1>
+    </ion-header-bar>
+
+    <ion-content scroll="false">
+        <google-map center="map.center" zoom="map.zoom">
+            <marker
+                    ng-repeat="marker in markers"
+                    coords="marker">
+            <window
+                    show="true"
+                    templateUrl="templates/map-info-window.html">
+            </window>
+            </marker>
+        </google-map>
     </ion-content>
-    <ion-footer-bar class="bar-dark">
-        <a ng-click="centerOnMe()" class="button button-icon icon ion-navigate">Find Me</a>
+
+    <ion-footer-bar class="bar-stable">
+        <a ng-click="centerOnMe()" class="button button-icon icon ion-navigate"></a>
     </ion-footer-bar>
 </ion-view>
 

@@ -7,6 +7,7 @@
 
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+    <link href="lib/ion-google-place/ion-google-place.css">
 
     <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
     <link href="css/ionic.app.css" rel="stylesheet">
@@ -14,16 +15,19 @@
 
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
-    <script src="lib/ionic/js/angular/angular-route.js"></script>
 
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
 <!-- Google Map library -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCOcoYda_8CF03-Hw4at26v4MxcU8yyLsA&sensor=true"></script>
+      <script src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
 
-    <!-- your app's js -->
+      <script src='lib/ion-google-place/ion-google-place.js'></script>
+      <script src='lib/lodash/dist/lodash.underscore.min.js'></script>
+      <script src='lib/angular-google-maps/dist/angular-google-maps.min.js'></script>
+<!-- your app's js -->
     <script src="js/app.js"></script>
     <script src="js/controllers.js"></script>
+    <script src="js/directive.js"></script>
   </head>
 
   <body ng-app="starter">

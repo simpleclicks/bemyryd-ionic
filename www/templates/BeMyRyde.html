@@ -7,14 +7,14 @@
         <div class="list">
             <label class="item item-input item-stacked-label">
                 <span class="input-label">Source</span>
-                <input type="text" placeholder="San Jose, CA">
+                <input ng-model="chosenSrc" googleplace/>
             </label>
             <label class="item item-input item-stacked-label">
                 <span class="input-label">Destination</span>
-                <input type="text" placeholder="San Francisco, CA">
+                <input ng-model="chosenDest" googleplace/>
             </label>
         </div>
-        <button ng-click="goToMap()" class="button button-block button-positive">
+        <button ng-click="goToMap()" class="button button-block button-calm">
             Submit
         </button>
     </ion-content>

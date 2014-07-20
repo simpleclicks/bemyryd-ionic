@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'ngRoute'])
+angular.module('starter', ['ionic', 'starter.controllers', 'google-maps', 'ion-google-place'])
 
     .run(function ($ionicPlatform) {
         $ionicPlatform.ready(function () {
@@ -20,7 +20,67 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngRoute'])
         });
     })
 
-    .config(function ($stateProvider, $urlRouterProvider, $routeProvider) {
+    .directive('googleplace', function() {
+        return {
+            require: 'ngModel',
+            link: function(scope, element, attrs, model) {
+                var options = {
+                    types: []
+                };
+                scope.gPlace = new google.maps.places.Autocomplete(element[0], options);
+
+                google.maps.event.addListener(scope.gPlace, 'place_changed', function() {
+                    scope.$apply(function() {
+                        model.$setViewValue(element.val());
+                    });
+                });
+            }
+        };
+    })
+
+
+.factory('LocationService', function($q) {
+
+        var latLong = null;
+
+        var getLatLong = function(refresh) {
+
+            var deferred = $q.defer();
+
+            if( latLong === null || refresh ) {
+
+                console.log('Getting lat long');
+                navigator.geolocation.getCurrentPosition(function(pos) {
+                    console.log('Position=')
+                    console.log(pos);
+                    latLong =  { 'lat' : pos.coords.latitude, 'long' : pos.coords.longitude }
+                    deferred.resolve(latLong);
+
+                }, function(error) {
+                    console.log('Got error!');
+                    console.log(error);
+                    latLong = null
+
+                    deferred.reject('Failed to Get Lat Long')
+
+                });
+
+            }  else {
+                deferred.resolve(latLong);
+            }
+
+            return deferred.promise;
+
+        };
+
+        return {
+
+            getLatLong : getLatLong
+
+        }
+    })
+
+    .config(function ($stateProvider, $urlRouterProvider) {
         $stateProvider
 
             .state('app', {
