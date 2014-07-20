@@ -77,7 +77,15 @@ angular.module('starter.controllers', [])
                 latitude: 45,
                 longitude: -73
             },
-            zoom: 8
+            zoom: 8,
+            events: {
+                tilesloaded: function (map) {
+                    $scope.centerOnMe();
+                    $scope.$apply(function () {
+                        $scope.mapInstance = map;
+                    });
+                }
+            }
 
         };
 

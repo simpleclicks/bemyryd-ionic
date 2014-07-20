@@ -4,7 +4,7 @@
     </ion-header-bar>
 
     <ion-content scroll="false">
-        <google-map center="map.center" zoom="map.zoom">
+        <google-map center="map.center" events="map.events" zoom="map.zoom">
             <marker
                     ng-repeat="marker in markers"
                     coords="marker">
