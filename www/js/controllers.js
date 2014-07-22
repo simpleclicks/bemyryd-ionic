@@ -48,13 +48,20 @@ angular.module('starter.controllers', [])
 
     .controller('HomeCtrl', function ($scope, $stateParams, $location, $state) {
         console.log("in home ctrl");
-        $scope.postRide = function () {
-            console.log("in post ride");
+            $scope.showAlert = function() {
+                console.log("inside popup")
+                var alertPopup = $ionicPopup.alert({
+                    title: 'Don\'t eat that!',
+                    template: 'It might taste good'
+                });
+                alertPopup.then(function (res) {
+                    console.log('Thank you for not eating my delicious ice cream cone');
+                });
+            };
             $state.go("app.postryd")
-        };
+
 
         $scope.getRide = function () {
-            console.log("in post ride");
             $state.go("app.getryd")
         };
     })
@@ -65,7 +72,21 @@ angular.module('starter.controllers', [])
         }
     })
 
-    .controller('PostRideCtrl', function ($scope) {
+    .controller('PostRideCtrl', function ($scope,$ionicPopup) {
+
+        $scope.showAlert = function() {
+            console.log("inside popup")
+            var alertPopup = $ionicPopup.alert({
+                title: 'Don\'t eat that!',
+                template: 'It might taste good'
+            });
+            alertPopup.then(function(res) {
+                console.log('Thank you for not eating my delicious ice cream cone');
+            });
+        };
+        $scope.ridePosted = function(){
+
+        }
 
     })
 
@@ -214,7 +235,17 @@ angular.module('starter.controllers', [])
 
                 console.log("my lat lng" + $scope.map.center.latitude +" " + $scope.map.center.longitude);
 
-                markerData.push({srcpos:[$scope.latLong.lat,$scope.latLong.long],destpos:[37.322619,-121.975555],profileImage:"img/1.jpg"});
+                markerData.push({
+                    "srcpos": [
+                        37.323105,
+                        -121.911999
+                    ],
+                    "destpos": [
+                        37.404703,
+                        -122.049989
+                    ],
+                    "profileImage": "https://fbcdn-sphotos-h-a.akamaihd.net/hphotos-ak-xap1/t1.0-9/1013397_10151735912974579_250286447_n.jpg"
+                });
 
                 //console.log(JSON.stringify(markerData));
 
