@@ -1,2 +1,64 @@
 /* Empty. Add your own CSS if you like */
 .angular-google-map-container { height: 1000px}
+
+.srcCustomMarker {
+    position:absolute;
+    cursor:pointer;
+    background:#ffff00;
+    width:50px;
+    height:50px;
+    /* -width/2 */
+    margin-left:-50px;
+    /* -height + arrow */
+    margin-top:-110px;
+    border-radius:10px;
+    padding:0px;
+}
+.srcCustomMarker:after {
+    content:"";
+    position: absolute;
+    bottom: -10px;
+    left: 15px;
+    border-width: 10px 10px 0;
+    border-style: solid;
+    border-color: #ffff00 transparent;
+    display: block;
+    width: 0;
+}
+.srcCustomMarker img {
+    width:40px;
+    height:40px;
+    margin:5px;
+    border-radius:10px;
+}
+
+.destCustomMarker {
+    position:absolute;
+    cursor:pointer;
+    background:#000000;
+    width:50px;
+    height:50px;
+    /* -width/2 */
+    margin-left:-50px;
+    /* -height + arrow */
+    margin-top:-110px;
+    border-radius:10px;
+    padding:0px;
+}
+.destCustomMarker:after {
+    content:"";
+    position: absolute;
+    bottom: -10px;
+    left: 15px;
+    border-width: 10px 10px 0;
+    border-style: solid;
+    border-color: #000000 transparent;
+    display: block;
+    width: 0;
+}
+.destCustomMarker img {
+    width:40px;
+    height:40px;
+    margin:5px;
+    border-radius:10px;
+}
